@@ -18,3 +18,10 @@ dependencies {
     compile "io.pivotal.gemfire:$it:9.0.1"
   }
 }
+
+task dataload(type: JavaExec) {
+  description 'stuff a customer record into site1 cluster'
+  classpath = sourceSets.main.runtimeClasspath
+  main = 'com.eitan.DataLoader'
+}
+
