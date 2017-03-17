@@ -4,8 +4,6 @@ start locator --name=locator --port=20334 --properties-file=gemfire.properties
 start server --name=server1 --properties-file=gemfire.properties --server-port=0 --classpath=../target/classes
 start server --name=server2 --properties-file=gemfire.properties --server-port=0 --classpath=../target/classes
 
-deploy jar ../listener/build/libs/listener-0.1.jar
+deploy --jar ../listener/build/libs/listener-0.1.jar
 alter region --name=Customer --cache-listener=com.eitan.LoggingCacheListener
-
-# alter region add cache listener ..
 

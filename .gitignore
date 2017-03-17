@@ -4,3 +4,6 @@
 .gradle
 .gradletasknamecache
 build
+locator
+server1
+server2
