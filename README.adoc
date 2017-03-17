@@ -6,10 +6,10 @@ A simple example implementation of GemFire's multi-site WAN topology, which can 
 == Configuration
 
 .Site 1:
-1 Locator (default port), 2 Servers, 1 Gateway Sender
+1 Locator (default port), 2 Servers, with Gateway Senders
 
 .Site 2:
-1 Locator, 2 Servers, 1 Gateway Receiver
+1 Locator, 2 Servers, with Gateway Receivers
 
 
 == Steps
