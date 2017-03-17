@@ -56,7 +56,7 @@ list gateways
 query --query="select * from /Customer"
 ----
 
-. A CacheListener is attached to the Customer region to log the event when a cache entry is created, updated, or deleted on site2.  So, in separate consoles, tail the server logs on site 2:
+. On site2, a CacheListener is attached to the Customer region to log the event when a cache entry is created, updated, or deleted.  So, in separate consoles, tail the server logs for site 2:
 +
 ----
 tail -f site2/server1/server1.log
