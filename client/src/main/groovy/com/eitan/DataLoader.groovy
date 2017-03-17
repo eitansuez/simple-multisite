@@ -13,10 +13,8 @@ class DataLoader {
     def region = clientCache.getRegion("Customer")
     region.removeAll(region.keySetOnServer())
 
-    def random = new Random()
     def customer = new Customer(firstName: 'Eitan', lastName: 'Suez')
-
-    region.put(random.nextLong(), customer)
+    region.put(1L, customer)
 
   }
 }
