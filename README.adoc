@@ -1,33 +1,38 @@
 
 = MultiSite w/GemFire
 
-This repository contains a simple example implementation of GemFire's multi-site WAN topology, which can be run on a local machine, primarily for learning purposes.
+A simple example implementation of GemFire's multi-site WAN topology, which can be run on a local machine, primarily for learning purposes.
 
 == Configuration
-Site 1: 1 Locator (default port), 2 Servers, 1 Gateway Sender
-Site 2: 1 Locator, 2 Servers, 1 Gateway Receiver
+
+.Site 1:
+1 Locator (default port), 2 Servers, 1 Gateway Sender
+
+.Site 2:
+1 Locator, 2 Servers, 1 Gateway Receiver
 
 
 == Steps
 
-. Start first site's cluster:
+. Install Gradle
 
+. Start first site's cluster:
++
 ----
 cd site1
 ./start.sh
 ----
 
 . In a separate console, start second site's cluster:
-
++
 ----
 cd site2
 ./start.sh
 ----
 
-. At this point you have the definition of one region: *Customer* on both clusters.  You can log in to each cluster using gfsh, connect, and verify that the region exists, and can also list gateways.
-
-On "site1":
-
+. At this point you have the definition of one region: _Customer_ on both clusters.  You can log in to each cluster using gfsh, connect, and verify that the region exists, and can also list gateways.
++
+.On "site1":
 ----
 gfsh
 connect
@@ -35,9 +40,8 @@ list members
 list regions
 list gateways
 ----
-
-On "site2":
-
++
+.On "site2":
 ----
 gfsh
 connect --locator=localhost[20334]
@@ -47,20 +51,20 @@ list gateways
 ----
 
 . Verify there's no data in the region (on both clusters), with:
-
++
 ----
 query --query="select * from /Customer"
 ----
 
-. There's a CacheListener attached to the Customer region that will log the event when a cache entry is created, updated, or deleted on site2.  So, in separate consoles, tail the server logs on site 2:
-
+. A CacheListener is attached to the Customer region to log the event when a cache entry is created, updated, or deleted on site2.  So, in separate consoles, tail the server logs on site 2:
++
 ----
 tail -f site2/server1/server1.log
 tail -f site2/server2/server2.log
 ----
 
 . Run a client to load a Customer object into the first cluster, and watch the cache listener on site2 notify you that it received a copy:
-
++
 ----
 cd client
 gradle dataload
