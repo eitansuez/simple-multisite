@@ -14,7 +14,7 @@ repositories {
   
 dependencies {
   ['geode-core', 'geode-wan', 'geode-cq'].each {
-    compile "io.pivotal.gemfire:$it:9.0.1"
+    compile "io.pivotal.gemfire:$it:9.1.0"
   }
 }
 
